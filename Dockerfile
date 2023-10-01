@@ -11,7 +11,7 @@ ENV NODE_OPTIONS '--no-experimental-fetch'
 COPY next.config.js ./
 COPY public ./public
 COPY package.json ./package.json
-COPY yarn.lock ./yarn.lock
+COPY bun.lockb ./bun.lockb
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY .next/standalone ./
@@ -21,7 +21,7 @@ COPY ./scripts/run.sh ./scripts/run.sh
 
 # Install dependencies
 RUN apt-get update -y && apt-get install -y openssl
-RUN yarn global add prisma
+RUN bun i --global prisma
 
 # Expose the default application port
 EXPOSE $PORT
